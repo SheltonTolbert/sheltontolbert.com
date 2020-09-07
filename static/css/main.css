@@ -1,0 +1,341 @@
+/*
+menu bar : line 45
+body : 111
+
+
+*/
+
+body,
+html {
+  margin: 0;
+  font-family: sans-serif;
+  width: 100%;
+  height: 100%;
+}
+
+.home {
+  margin: auto;
+}
+
+.content {
+  position: absolute;
+  margin: auto;
+  width: 400px;
+}
+
+table,
+td,
+th {
+  border: 1px solid #aaa;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  height: 30px;
+}
+
+td {
+  text-align: center;
+  padding: 5px;
+}
+
+.form {
+  margin-top: 20px;
+}
+
+#content {
+  width: 70%;
+}
+
+/*------------------------------------------------------------- Menu Bar ------------------------------------------------*/
+
+/* Add a black background color to the top navigation */
+.topnav {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #000000;
+  text-align: center;
+  padding: 20px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  color: black;
+  font-weight: bold;
+}
+
+/* Centered section inside the top navigation */
+.topnav-centered a {
+  float: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Right-aligned section inside the top navigation */
+.topnav-right {
+  float: right;
+}
+
+/* Responsive navigation menu - display links on top of each other instead of next to each other (for mobile devices) */
+@media screen and (max-width: 600px) {
+  .topnav a,
+  .topnav-right {
+    float: none;
+    display: block;
+  }
+
+  .topnav-centered a {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+  }
+}
+
+/*------------------------------------------------------------- Menu Bar ------------------------------------------------*/
+
+/*------------------------------------------------------------- Body ------------------------------------------------*/
+.body-container {
+  position: relative;
+  width: 1000px;
+  height: 100%;
+  top: 100px;
+  margin: 0 auto;
+}
+
+.blog-container {
+  width: 750px;
+  height: 100%;
+  margin: auto;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-p {
+  height: 100%;
+  line-height: 2em;
+  font-weight: bold;
+}
+.container {
+  width: 1000px;
+  height: 100%;
+  margin: auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.body {
+  position: center;
+  max-width: 1000px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.post {
+  height: 300px;
+  width: 100%;
+  display: flex;
+}
+.photo {
+  max-width: 60%;
+  border-radius: 10px;
+  height: auto;
+}
+.text-box {
+  width: 60%;
+  height: 50%;
+  margin-top: 2%;
+  margin-left: auto;
+}
+
+.title-text {
+  width: 100%;
+  margin-left: 10%;
+  text-align: left;
+}
+.summary {
+  width: 100%;
+  margin-left: 10%;
+  text-align: left;
+}
+.code-text {
+  width: 100%;
+  height: 50%;
+}
+
+.contact {
+  font-size: 75pt;
+  margin-left: 0;
+  font-weight: bold;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+a:link {
+  color: black;
+  text-decoration: none;
+  margin: auto;
+}
+
+a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+/*----------------------------------------------------------------- Images --------------------------------------------*/
+
+.img-menu-right {
+  padding: 20px 20px;
+  float: right;
+}
+
+/*------------------------------------------------------------- Footer ------------------------------------------------*/
+
+/* Add a black background color to the top navigation */
+.footnav {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.footnav a {
+  float: left;
+  color: #000000;
+  text-align: center;
+  padding: 20px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.footnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.footnava.active {
+  background-color: #ff7100;
+  color: white;
+}
+
+/* Centered section inside the top navigation */
+.footnav-centered a {
+  float: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Right-aligned section inside the top navigation */
+.footnav-right {
+  float: right;
+}
+
+/* Responsive navigation menu - display links on top of each other instead of next to each other (for mobile devices) */
+@media screen and (max-width: 600px) {
+  .footnav a,
+  .footnav-right {
+    float: none;
+    display: block;
+  }
+
+  .footnav-centered a {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+  }
+}
+
+/*------------------------------------------------------------- Footer ------------------------------------------------*/
+
+/* ARTWORK */
+
+.gallery {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.image {
+  max-width: 50%;
+  max-height: 20%;
+  width: auto;
+  height: auto;
+  margin: auto;
+  margin-top: 2%;
+}
+
+/* ABOUT ME */
+
+.aboutme {
+  margin: 0;
+  height: auto;
+}
+h1.contact {
+  line-height: 0;
+}
+h1.aboutme {
+  line-height: 1.5;
+}
+
+h1.home-nav {
+  margin: auto;
+  text-align: center;
+  vertical-align: center;
+  margin-left: 2;
+  margin-right: 2;
+  word-spacing: 3;
+  font-size: xxx-large;
+}
+a.home-nav-link {
+  line-height: 1em;
+  text-decoration: none;
+  margin: 10px;
+}
+
+.home-logo {
+  width: 20%;
+  height: auto;
+
+  margin: auto;
+  margin-top: 2%;
+}
+
+a.bio-link {
+  text-decoration: underline;
+}
+
+.heart {
+  font-size: xxx-large;
+}

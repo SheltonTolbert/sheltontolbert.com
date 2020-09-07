@@ -1,0 +1,8 @@
+To solve:
+Image in header cant resize
+
+TODO:
+
+Footer
+
+Page Layout
