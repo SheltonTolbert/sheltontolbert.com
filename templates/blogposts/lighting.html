@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+<div></div>
+{% block head %} {% endblock %} {% block body %}
+
+<div class="blog-container">
+  <p style="text-align: center"><strong>Emission</strong></p>
+  <p style="text-align: left">
+    The whole lighting process starts with an emission source. In the real world
+    this can be a light bulb, the sun or anything else that produces light (this
+    article covers real world emissive sources
+    <a href="https://bit.ly/2N9HggB)">https://bit.ly/2N9HggB)</a>. Just as in
+    the real world, in computer graphics an emissive source is required for an
+    image to render properly. These emissive sources can be either light sources
+    or self-emissive materials. Computer graphics light sources function much
+    like their physical counterparts, a spot light will function as expected, as
+    will a point or directional light (a directional light is a light source
+    that is infinitely far away - think the sun). There is one light source that
+    exists in computer graphics that is technically physically impossibly - the
+    ambient light source. The ambient light source blankets the entire virtual
+    world with the same amount of light, this makes shadows impossible but
+    serves as a method of providing a base light level (floor) that the
+    developer can then add other light sources to.&nbsp;
+  </p>
+  <p style="text-align: center">
+    <strong>Emission &amp; Self-Emission</strong>
+  </p>
+  <p style="text-align: left">
+    Self emission can be described as any material that can emit light directly,
+    the tungsten in a light bulb for example. While most materials in the real
+    world are not emissive, in computer graphics we can add an emissive value to
+    any material we want. This is particularly useful when creating motion
+    graphics or any other non-photorealistic images.&nbsp;&nbsp;
+  </p>
+  <p style="text-align: left">&nbsp;</p>
+  <p style="text-align: center"><strong>Absorption &amp; Reflection</strong></p>
+  <p style="text-align: left">
+    Light absorption is the process by which certain frequencies of the visible
+    light spectrum are absorbed by the surface of an object. This light
+    absorption is how color is calculated as any frequencies that are not
+    absorbed are reflected, these reflected frequencies determine the color of
+    the object. When we set the color value of a material we are actually
+    dictating which frequencies will be reflected( color(255,0,0) will reflect
+    only red values). When we set the color of a light we dictate the
+    frequencies of emission (light.color(0,0,255) will emit blue).&nbsp; Note
+    that if the light is emitting red and theobject material only reflects blue,
+    the object will not reflect any light and as such will appear
+    black.&nbsp;&nbsp;
+  </p>
+  <p style="text-align: center">
+    <img
+      src="https://www.siyavula.com/read/science/grade-8/visible-light/images/gr8ec04-gd-0027.png"
+      alt=""
+    />
+  </p>
+  <p style="text-align: center">
+    <em
+      >source:
+      <a
+        href="https://www.siyavula.com/read/science/grade-8/visible-light/12-visible-light?id=toc-id-5"
+        >https://www.siyavula.com/read/science/grade-8/visible-light/12-visible-light?id=toc-id-5</a
+      ></em
+    >
+  </p>
+  <p style="text-align: center">
+    <strong>An Interactive Demonstration</strong>
+  </p>
+  <p style="text-align: left">
+    The following p5 example illustrates the different types of light sources
+    and materials and their interactions. The top three sliders adjust the x,y,z
+    position of the point light source, the buttons will allow you to change the
+    light source/material/enable object wireframe, and the bottom slider
+    controls the global light value. Note that the ambient light and emissive
+    material are uniform light sources therefore all object outline will be
+    lost. By enabling wireframe mode you can see the&nbsp; details of the
+    environment in these conditions. The camera can be controlled via click and
+    drag orbit.&nbsp;
+  </p>
+  <p style="text-align: center">&nbsp;</p>
+  <p style="text-align: left">&nbsp;</p>
+  <p style="text-align: center">
+    <iframe
+      src="https://editor.p5js.org/shelton/embed/x6Vs2lfw_"
+      width="500"
+      height="800"
+      style="border: 0"
+    ></iframe>
+  </p>
+  <p style="text-align: center">
+    <em>Source: https://editor.p5js.org/shelton/sketches/x6Vs2lfw_</em>
+  </p>
+  <p style="text-align: center"><strong>References</strong></p>
+  <p style="text-align: left">
+    <a href="https://andor.oxinst.com/learning/view/article/emission-of-light"
+      >https://andor.oxinst.com/learning/view/article/emission-of-light</a
+    >
+  </p>
+  <p style="text-align: left">
+    <a
+      href="https://www.physicsclassroom.com/class/light/Lesson-2/Light-Absorption,-Reflection,-and-Transmission"
+      >https://www.physicsclassroom.com/class/light/Lesson-2/Light-Absorption,-Reflection,-and-Transmission</a
+    >
+  </p>
+  <p style="text-align: center">&nbsp;</p>
+  <p style="text-align: center">&nbsp;</p>
+</div>
+{% endblock %} {% block footer %} {% endblock %}

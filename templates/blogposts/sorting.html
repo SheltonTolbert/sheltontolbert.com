@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+<div></div>
+{% block head %} {% endblock %} {% block body %}
+<div class="blog-container">
+  <p>
+    Sorting algorithms are generally the go to topic when discussing algorithms.
+    These algorithms are used to sort a list or array of elements according to
+    some predetermined comparison ruleset. There are two main factors that one
+    must consider when choosing which sorting algorithm to implement , space and
+    time complexity.&nbsp;
+  </p>
+  <p style="text-align: center"><strong>Time Complexity</strong></p>
+  <p style="text-align: left">
+    Time complexity refers to the time it takes for an algorithm to complete its
+    tasks relative to the input size. Most good software engineers will take
+    time complexity into account in the planning phase of development. During
+    this phase it is important to consider the edge cases where your algorithms
+    will run at their worst, this is&nbsp;<strong
+      >worst-case time complexity.</strong
+    >
+    By not skipping this step, we can account for the edge cases from the
+    beginning and be less surprised when we encounter issues later in
+    development.&nbsp; Below is a handy reference table that provides best,
+    worst, and average case complexities.&nbsp;
+  </p>
+  <p style="text-align: left">&nbsp;</p>
+  <p style="text-align: left">
+    <img
+      class="photo"
+      style="display: block; margin-left: auto; margin-right: auto"
+      src="https://miro.medium.com/proxy/1*ipkeWQ_Lb0lbkhB8rigxTA.png"
+      alt="A tour of the top 5 sorting algorithms with Python code"
+    />
+  </p>
+  <p style="text-align: center">
+    <em
+      >Source:&nbsp;
+      <a
+        href="https://medium.com/@george.seif94/a-tour-of-the-top-5-sorting-algorithms-with-python-code-43ea9aa02889"
+        >https://medium.com/@george.seif94/a-tour-of-the-top-5-sorting-algorithms-with-python-code-43ea9aa02889</a
+      ></em
+    >
+  </p>
+  <p style="text-align: center">&nbsp;</p>
+  <p style="text-align: center">
+    <strong>Space Complexity</strong><strong></strong>
+  </p>
+  <p style="text-align: left">
+    Space complexity refers to the amount of memory required to execute a
+    particular algorithm relative to its input size. This one can get a little
+    tricky particularly when it comes to recursion but I will address that with
+    the code example below. It is important to note that space complexity refers
+    not only to the memory used by the inputs but also the memory that is set
+    aside by the algorithm(empty variables and temp arrays for example), this is
+    referred to as <strong>Auxiliary Space</strong>.&nbsp;
+  </p>
+  <p style="text-align: left">&nbsp;</p>
+  <p style="text-align: center"><strong>Some Code</strong></p>
+  <p style="text-align: left">
+    Below is an example of an O(n!) sorting algorithm. Imagine you are trying to
+    sort a deck of cards Instead of using a selection sort like most normal
+    humans you decide that your preferred method of sorting is to throw the deck
+    on to the floor, pick up and place the cards into the stack and then iterate
+    through them to check if they are sorted - bold move.&nbsp;
+  </p>
+  <p style="text-align: left">&nbsp;</p>
+  <pre>#DISCLAIMER: Never use this code for anything ever, it is only useful for educational purposes<br /><br />import random<br />import math<br /><br />sorted = False<br />x = 0<br />arraySize = 10 <br />array = [0] * arraySize<br /><br /><br />for i in range(0, arraySize):<br />array[i] = random.randint(0,100)<br /><br />y = len(array) - 1<br /><br />while(not sorted):<br /><br />sorted = True<br />random.shuffle(array) <br /><br />for i in range (1 , y):<br /><br />if (array[i - 1] &gt; array[i]):<br />x += 1<br />sorted = False<br /><br /><br /><br />print(array, "\nThis array was sorted in", x, "steps", "out of a total possible", math.factorial(arraySize), "steps" )<br /><br /><br /></pre>
+  <p style="text-align: left">
+    I encourage you to run this code for yourself (you can do so
+    <a href="https://onlinegdb.com/rkeNWRDNsL"> here</a>), notice that with just
+    10 cards we would have to repeat the dropping/picking up/iterating anywhere
+    from 1 to&nbsp; 3628800 times! Another important note, in most cases this
+    algorithm throw a recursion depth limit error if you try to use recursion
+    without memoization - a great example of space complexity
+    consideration.&nbsp;
+  </p>
+  <p style="text-align: left">&nbsp;</p>
+  <p style="text-align: left">References:</p>
+  <p style="text-align: left">
+    <a
+      href="https://medium.com/@george.seif94/a-tour-of-the-top-5-sorting-algorithms-with-python-code-43ea9aa02889"
+      >https://medium.com/@george.seif94/a-tour-of-the-top-5-sorting-algorithms-with-python-code-43ea9aa02889</a
+    >
+  </p>
+  <p style="text-align: left">&nbsp;</p>
+  <p style="text-align: left">
+    <a
+      href="https://medium.com/@StueyGK/algorithm-time-complexity-and-big-o-notation-51502e612b4d"
+      >https://medium.com/@StueyGK/algorithm-time-complexity-and-big-o-notation-51502e612b4d</a
+    >
+  </p>
+  <p style="text-align: left">&nbsp;</p>
+  <p style="text-align: left">&nbsp;</p>
+  <p style="text-align: left">&nbsp;</p>
+</div>
+{% endblock %} {% block footer %} {% endblock %}

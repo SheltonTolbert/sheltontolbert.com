@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+<div></div>
+{% block head %} {% endblock %} {% block body %}
+<div class="blog-container">
+  <p class="blog-p"><p>Big O notation is a mathematical representation that describes the limits of a function generally relative to inputs of massive quantities. In computer science, Big O notation is used to classify the efficiency of algorithms based on their runtime complexity. By analyzing their code using Big O, programmers are able to find areas of where efficiency can be improved. Some of the most common Big O classifications are logarithmic (log n), linear(n) and quadratic (n<sup>2</sup>):</p>
+  <p>&nbsp;</p>
+  <p><img class='photo' src="https://miro.medium.com/max/1230/1*U4dZWeXgNNrYaedRCuzTIg.png" alt="" /></p>
+  <p style="text-align: center;"><strong>Logarithmic&nbsp;</strong></p>
+  <p style="text-align: left;">Logarithmic time complexity generally occurs when out of many possible next choices only one is chosen. In other words, log n time is achieved by iteratively narrowing down elements for which the algorithm processes. Binary search on a sorted array is a great example of a log n function. The Same way you would look up a name in a phone book (remember those!?), you can break down an array by continually splitting it until you find your element.</p>
+  <p style="text-align: center;"><strong><img class='photo' src="https://www.geeksforgeeks.org/wp-content/uploads/Binary-Search.png" alt="" /></strong></p>
+  <p style="text-align: center;"><strong>Linear</strong></p>
+  <p style="text-align: left;">Linear time complexity describes an algorithm whose complexity grows in direct proportion to the size of the input. In other words, the larger the input, the longer the process and the more memory required. A great example of a linear time complexity algorithm would be simply iterating on a list of numbers. For as many numbers in the list (<em>n</em>) , the algorithm perform an action <em>n</em> number of times.</p>
+  <p style="text-align: center;"><strong>Quadratic</strong></p>
+  <p style="text-align: left;">Quadratic time complexity describes an&nbsp; algorithm whose complexity grows in direct proportion to the size of the input squared. Quadratic complexity generally occurs when we perform nested loop operations on our data.&nbsp; It is important to note that Quadratic complexity algorithms can, in some cases, run faster than Logarithmic complexity functions. Particularly on smaller input functions, as Quadratic functions tend to be less spatially demanding than more time efficient algorithms and as such tend to run faster on smaller inputs.</p>
+  <p style="text-align: left;">&nbsp;</p>
+  <p style="text-align: left;">References:</p>
+  <p style="text-align: left;"><a href="https://www.coengoedegebure.com/understanding-big-o-notation/">https://www.coengoedegebure.com/understanding-big-o-notation/</a></p>
+  <p style="text-align: left;"><a href="https://www.geeksforgeeks.org/binary-search/">https://www.geeksforgeeks.org/binary-search/</a></p>
+  <p style="text-align: left;"><a href="https://medium.com/@ariel.salem1989/an-easy-to-use-guide-to-big-o-time-complexity-5dcf4be8a444">https://medium.com/@ariel.salem1989/an-easy-to-use-guide-to-big-o-time-complexity-5dcf4be8a444</a></p></p>
+</div>
+{% endblock %} {% block footer %} {% endblock %}

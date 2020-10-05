@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+<div></div>
+{% block head %} {% endblock %} {% block body %}
+<div class="blog-container">
+  <p class="blog-p">
+    “Subdivision is a powerful paradigm for the generation of surfaces of
+    arbitrary topology”(Zorin, Schröder, & Sweldens. 1996).
+    <br />
+    In other words, subdivision allows for complex meshes to be generated based
+    on interpolation of an approximation of a shape. Take the figure below for
+    example; as we start with the base wireframe on the left and increase our
+    level of subdivision, the low polygonal mesh begins to more closely resemble
+    the features of a real-world object.
+
+    <img
+      src="https://download.autodesk.com/us/maya/2009help/images/MED/MacGyver/English/SubDs/comp_subd_bottle.png"
+      class="blog-image"
+    />
+
+    <br />Source: Autodesk Maya Manual:
+    <a href="http://download.autodesk.com/us/support/files/subds.pdf"
+      >http://download.autodesk.com/us/support/files/subds.pdf</a
+    ><br /><br />
+    This method is known as interpolated subdivision (Zorin, Schröder, &
+    Sweldens. 1996). Interpolated subdivision begins with the specification of
+    base vertices, in our example we will generating a sphere approximation by
+    starting with a tetrahedron. Using the p5.js library we can declare our base
+    shape as such:
+    <code>
+      <br />
+      radius = 50;<br />
+      scalar = radius<br />
+      origin = createVector(0, 0, 0);<br />
+      var p1 = createVector(0.0, 0.0, -1.0);<br />
+      var p2 = createVector(0.0, 0.942809, 0.333333);<br />
+      var p3 = createVector(-0.816497, -0.471405, 0.333333);<br />
+      var p4 = createVector(0.816497, -0.471405, 0.333333);<br />
+      p1 = applyScalar(p1);<br />
+      p2 = applyScalar(p2);<br />
+      p3 = applyScalar(p3);<br />
+      p4 = applyScalar(p4);<br />
+      p1.add(origin);<br />
+      p2.add(origin);<br />
+      p3.add(origin);<br />
+      p4.add(origin);<br />
+      <br />
+    </code>
+    Where the radius is the vector distance all points should be from the origin
+    of the shape, and the apply scalar method applies our scalar via basic
+    matrix multiplication. We must then add our now scaled vectors to our
+    object's origin, this will give us our starting shape.
+    <i>Tetrahedron rendered via the above code</i>
+    Now that we have defined our base shape, we can begin to define our
+    subdivision algorithm. The first method that we will use is the
+    createCircle() method. This method accepts parameters for our four base
+    vectors and our desired level of subdivision.
+    <code>
+      <br />
+      function createCircle(a, b, c, d, n) {<br />
+      subdivide(a, b, c, n);<br />
+      subdivide(d, c, b, n);<br />
+      subdivide(a, d, b, n);<br />
+      subdivide(a, c, d, n);<br />
+      } <br />
+      <br />
+    </code>
+    Note that the createCircle method calls subdivide() four times, once for
+    each face of the tetrahedron.
+    <br />The next method is the subdivide() method which accepts parameters for
+    three vectors and a count variable. This count variable is equal to the
+    subdivision variable and acts as our recursive base case. The subdivide
+    method finds and normalizes the midpoint between each vertex and then calls
+    its self recursively so long as the base case has not yet been fulfilled.
+    Note that on the last pass before the base case is met a call to vecLine()
+    is made, this function is responsible for creating the wireframe of the
+    shape, calling it every time would result in drawing all iterations of the
+    recursive loop. Note also that upon execution of the base case the cir()
+    method is called, this method is responsible for adding all interpolated
+    points to a point array for later rendering.
+
+    <code>
+      function subdivide(a, b, c, count) {<br />
+      if (count > 0) {<br />
+      var ab = mid(a, b);<br />
+      var ac = mid(a, c);<br />
+      var bc = mid(b, c);<br />
+      if (count == 1) {<br />
+      vecLine(ab, bc);<br />
+      vecLine(ab, ac);<br />
+      vecLine(bc, ac);<br />
+      }<br />
+      subdivide(a, ab, ac, count - 1);<br />
+      subdivide(ab, b, bc, count - 1);<br />
+      subdivide(bc, c, ac, count - 1);<br />
+      subdivide(ab, bc, ac, count - 1);<br />
+      } else {<br />
+      cir(a, b, c);<br />
+      }<br />
+      }<br />
+      function mid(v1, v2) {<br />
+      var vMid = createVector((v1.x + v2.x) / 2, (v1.y + v2.y) / 2, (v1.z +
+      v2.z) / 2);<br />
+      vMid = normalify(vMid);<br />
+      vMid = applyScalar(vMid);<br />
+      return vMid;<br />
+      }<br />
+      function vecLine(v1, v2) {<br />
+      lines.push(new Lines(v1.x, v1.y, v1.z, v2.x, v2.y, v2.z));<br />
+      }<br />
+      // normalize is a built in function so we have to name this one something
+      else<br />
+      function normalify(v) {<br />
+      // vector magnitude formula<br />
+      var magnitude = sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z));<br />
+      // normalize function<br />
+      var v1 = createVector(v.x / magnitude, v.y / magnitude, v.z /
+      magnitude);<br />
+      return v1;<br />
+      }<br />
+      function cir(a, b, c) {<br />
+      points.push(a);<br />
+      points.push(b);<br />
+      points.push(c);<br />
+      }<br />
+    </code>
+    After all points have been calculated we can now begin the rendering
+    process. For point rendering we must simply loop through the point array the
+    holds our interpolated vectors. These vectors contain the x, y, z
+    coordinates necessary to render our points.
+    <br />
+    <code>
+      //draw points<br />
+      if (p == 1) {<br />
+      for (var i = 0; i < points.length; i++) {<br />
+      point(points[i].x, points[i].y, points[i].z);<br />
+      }<br />
+      }<br />
+    </code>
+    <i>A point cloud representation of the subdivided shape</i>
+    To render our wireframe, we can access our line object that we created in
+    the last pass of our subdivision. By looping through an array of these
+    objects we can produce a line drawn representation of our shape.
+    <code
+      >// draw lines if (l == 1) {<br />
+      stroke(135, 0, 0);<br />
+      for (var i = 0; i < lines.length; i++) {<br />
+      strokeWeight(0.5);<br />
+      line(lines[i].x1, lines[i].y1, lines[i].z1, lines[i].x2, lines[i].y2,
+      lines[i].z2);<br />
+      }<br />
+      }</code
+    >
+    <br /><i>A wireframe representation of the subdivided shape </i><br />
+    Finally, by filling each space between the vertices, creating a light source
+    and applying a material, we can create a shaded mesh approximation of a 3D
+    sphere.
+    <code>
+      if (f == 1) {<br />
+      lights();<br />
+      specularMaterial(255, 0, 0);<br />
+      beginShape();<br />
+      noStroke();<br />
+      for (var i = 0; i < points.length; i++) {<br />
+      vertex(points[i].x, points[i].y, points[i].z);<br />
+      }<br />
+      endShape();<br />
+      }<br />
+    </code>
+  </p>
+</div>
+{% endblock %} {% block footer %} {% endblock %}
