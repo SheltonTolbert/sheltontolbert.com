@@ -1,9 +1,20 @@
 
 # Welcome to the API!
 
-Some projects just don't necessitate implementation of a user interface. in these cases, an API provides the perfect point if interaction between the user and some sweet sweet back end code.
+Some projects just don't necessitate implementation of a user interface. In these cases, an API provides the perfect point of interaction between the user and some sweet sweet back end code.
 
 Currently, my website only supports GET requests. For the uninitiated, you can learn all about GET requests here : https://learning.postman.com/docs/getting-started/sending-the-first-request/
+
+# Good News! 
+```
+https://www.SheltonTolbert.com/api/good-news
+```
+Forwards the user to a random feel good article parsed from over 50 categories of good news. 
+
+```
+https://www.SheltonTolbert.com/api/get-good-news
+```
+returns a url in text format
 
 
 
